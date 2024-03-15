@@ -124,3 +124,43 @@ form.signup, form.login {
 .Error{
   color: red;
 }
+
+
+
+
+.logOutBtn {
+  
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color:  var(--primary);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  line-height: normal;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.logOutBtn:disabled {
+  pointer-events: none;
+}
+
+.logOutBtn:hover {
+  color: #fff;
+  background-color:  var(--primary);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.logOutBtn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
