@@ -4,7 +4,7 @@ import { useAuthContext } from "./useAuthContext";
 export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
-
+  const [errorMessage,setErrorMessage] = useState("")
   const signup = async (email, password) => {
     setIsLoading(true);
 
@@ -17,6 +17,7 @@ export const useSignup = () => {
 
     if (!response.ok) {
       setIsLoading(false);
+      setErrorMessage(json.error)
     }
     if (response.ok) {
       // Save user data to local storage
@@ -29,5 +30,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, isLoading };
+  return { signup, isLoading,errorMessage };
 };
