@@ -1,9 +1,12 @@
 import { useTasksContext } from "../hooks/usetasksContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import dateFormat from "dateformat";
+import { Modal } from "./Modal";
+
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTasksContext();
   const { user } = useAuthContext();
+  // const { sure, setSure } = useState(false);
 
   const handleClick = async () => {
     if (!user) {
@@ -35,12 +38,8 @@ const TaskDetails = ({ task }) => {
         <strong>Progress: </strong>
         {task.progress}
       </p>
-      <p>
-        {dateFormat(task.createdAt,"longDate")}
-      </p>
-      <span className="material-symbols-outlined" onClick={handleClick}>
-        delete
-      </span>
+      <p>{dateFormat(task.createdAt, "longDate")}</p>
+      <Modal handleClick={handleClick} />
     </div>
   );
 };
