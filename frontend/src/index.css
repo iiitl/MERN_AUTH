@@ -120,3 +120,17 @@ form.signup, form.login {
   background: #fff;
   border-radius: 4px;
 }
+
+.custom-button{
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.custom-button:hover{
+  background-color: #36803a;
+}
