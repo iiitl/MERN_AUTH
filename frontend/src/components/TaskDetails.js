@@ -1,6 +1,6 @@
 import { useTasksContext } from "../hooks/usetasksContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import { Modal } from "./Modal";
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTasksContext();
   const { user } = useAuthContext();
@@ -35,9 +35,8 @@ const TaskDetails = ({ task }) => {
         <strong>Progress: </strong>
         {task.progress}
       </p>
-      <span className="material-symbols-outlined" onClick={handleClick}>
-        delete
-      </span>
+
+      <Modal handleClick={handleClick} />
     </div>
   );
 };
