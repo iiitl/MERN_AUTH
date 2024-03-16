@@ -1,10 +1,11 @@
 import { useTasksContext } from "../hooks/usetasksContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import { useState } from "react";
+import { EditForm } from "./EditForm";
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTasksContext();
   const { user } = useAuthContext();
-
+  const [edit, setEdit] = useState(false);
   const handleClick = async () => {
     if (!user) {
       return;
@@ -25,6 +26,7 @@ const TaskDetails = ({ task }) => {
 
   return (
     <div className="task-details">
+ 
       <h3>{task.title}</h3>
 
       <p>
@@ -35,9 +37,16 @@ const TaskDetails = ({ task }) => {
         <strong>Progress: </strong>
         {task.progress}
       </p>
-      <span className="material-symbols-outlined" onClick={handleClick}>
+      <span className="material-symbols-outlined delete" onClick={handleClick}>
         delete
       </span>
+      <span
+        className="material-symbols-outlined"
+        onClick={() => setEdit(!edit)}
+      >
+        edit
+      </span>
+      {edit && <EditForm task={task} setEdit={setEdit} />}
     </div>
   );
 };
