@@ -1,6 +1,6 @@
 import { useTasksContext } from "../hooks/usetasksContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import dateFormat from "dateformat";
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTasksContext();
   const { user } = useAuthContext();
@@ -34,6 +34,9 @@ const TaskDetails = ({ task }) => {
       <p>
         <strong>Progress: </strong>
         {task.progress}
+      </p>
+      <p>
+        {dateFormat(task.createdAt,"longDate")}
       </p>
       <span className="material-symbols-outlined" onClick={handleClick}>
         delete
