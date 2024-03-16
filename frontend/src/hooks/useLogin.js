@@ -26,6 +26,8 @@ export const useLogin = () => {
 
       // update loading state
       setIsLoading(false);
+            // saving it to localStorage of browser to save user session
+            localStorage.setItem("user", JSON.stringify(json));
     }
   };
 
