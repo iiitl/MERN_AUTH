@@ -2,11 +2,14 @@ import { useTasksContext } from "../hooks/usetasksContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import dateFormat from "dateformat";
 import { Modal } from "./Modal";
+import { useState } from "react";
+import { EditForm } from "./EditForm";
 
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTasksContext();
   const { user } = useAuthContext();
-  // const { sure, setSure } = useState(false);
+  const [edit, setEdit] = useState(false);
+
 
   const handleClick = async () => {
     if (!user) {
@@ -28,8 +31,14 @@ const TaskDetails = ({ task }) => {
 
   return (
     <div className="task-details">
+      <span
+        className="material-symbols-outlined"
+        onClick={() => setEdit(!edit)}
+      >
+        edit
+      </span>
+      <Modal handleClick={handleClick} />
       <h3>{task.title}</h3>
-
       <p>
         <strong>Description : </strong>
         {task.description}
@@ -39,7 +48,7 @@ const TaskDetails = ({ task }) => {
         {task.progress}
       </p>
       <p>{dateFormat(task.createdAt, "longDate")}</p>
-      <Modal handleClick={handleClick} />
+      {edit && <EditForm task={task} setEdit={setEdit}/>}
     </div>
   );
 };
