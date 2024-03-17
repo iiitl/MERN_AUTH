@@ -39,11 +39,15 @@ header a {
   gap: 100px;
 }
 .task-details {
+  display: inline-block;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 13px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 70%;  
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 .task-details h4 {
@@ -58,12 +62,12 @@ header a {
 }
 .task-details span {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0px;
+  right: 0px;
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
-  border-radius: 50%;
+  border-radius: 40%;
   color: #333;
 }
 
@@ -119,4 +123,14 @@ form.signup, form.login {
   padding: 20px;
   background: #fff;
   border-radius: 4px;
+}
+
+.progress {
+  display: inline-block;
+  height: 100px; 
+  width: 100px; 
+}
+
+.title{
+  margin: 0px;
 }

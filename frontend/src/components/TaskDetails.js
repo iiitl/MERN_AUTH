@@ -1,6 +1,8 @@
 import { useTasksContext } from "../hooks/usetasksContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import { formatDistanceToNow, parseISO } from "date-fns";
 const TaskDetails = ({ task }) => {
   const { dispatch } = useTasksContext();
   const { user } = useAuthContext();
@@ -23,18 +25,18 @@ const TaskDetails = ({ task }) => {
     }
   };
 
+  // console.log(task);
   return (
     <div className="task-details">
-      <h3>{task.title}</h3>
-
-      <p>
-        <strong>Description : </strong>
-        {task.description}
-      </p>
-      <p>
-        <strong>Progress: </strong>
-        {task.progress}
-      </p>
+      <div className="text">
+        <h3 className="title">{task.title}</h3>
+        <p>{task.description}</p>
+        <p></p>
+        <p>{formatDistanceToNow(parseISO(task.createdAt))} ago</p>
+      </div>
+      <div className="progress">
+        <CircularProgressbar value={task.progress} text={`${task.progress}%`} />
+      </div>
       <span className="material-symbols-outlined" onClick={handleClick}>
         delete
       </span>
