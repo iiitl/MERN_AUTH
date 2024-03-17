@@ -4,7 +4,7 @@ import { useSignup } from "../hooks/useSignup";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, isLoading } = useSignup();
+  const { signup, isLoading ,error} = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +31,7 @@ const Signup = () => {
 
       <button disabled={isLoading}>Sign up</button>
       {/* Display error message if there was an issue with the Sign up */}
+      {error && <div className="error-element">{error}</div>}
     </form>
   );
 };

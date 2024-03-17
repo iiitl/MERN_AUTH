@@ -120,3 +120,10 @@ form.signup, form.login {
   background: #fff;
   border-radius: 4px;
 }
+
+
+
+.error-element{
+color: red;
+font-weight: 500;
+}

@@ -4,7 +4,7 @@ import { useLogin } from "../hooks/useLogin";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading } = useLogin();
+  const { login, isLoading,error } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +29,7 @@ const Login = () => {
 
       <button disabled={isLoading}>Log in</button>
       {/* Display error message if there was an issue with the login */}
+      {error && <div className="error-element">{error}</div>}
     </form>
   );
 };

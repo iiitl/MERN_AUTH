@@ -3,6 +3,7 @@ import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
+  const [error,setError] = useState(null)
   const { dispatch } = useAuthContext();
 
   const login = async (email, password) => {
@@ -16,6 +17,7 @@ export const useLogin = () => {
     const json = await response.json();
 
     if (!response.ok) {
+      setError(json.error)
       setIsLoading(false);
     }
     if (response.ok) {
@@ -29,5 +31,5 @@ export const useLogin = () => {
     }
   };
 
-  return { login, isLoading };
+  return { login, isLoading,error };
 };
